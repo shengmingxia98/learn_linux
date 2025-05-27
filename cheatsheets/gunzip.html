@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gunzip命令速查表</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e6f7ff;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #c7254e;
+        }
+        .note {
+            background-color: #e7f5fe;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>gunzip 命令速查表</h1>
+    
+    <div class="note">
+        <strong>📌 核心特点：</strong> gunzip 是 gzip 的解压工具，默认解压后会<strong>删除</strong>原 .gz 文件！
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>命令</th>
+                <th>作用</th>
+                <th>记忆提示</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>gunzip file.gz</code></td>
+                <td>解压并<strong>删除</strong>原文件</td>
+                <td>默认行为</td>
+            </tr>
+            <tr>
+                <td><code>gunzip -k file.gz</code></td>
+                <td>解压并<strong>保留</strong>原文件</td>
+                <td><code>-k</code> = keep</td>
+            </tr>
+            <tr>
+                <td><code>gunzip -c file.gz > newfile</code></td>
+                <td>解压到新文件（保留原文件）</td>
+                <td><code>-c</code> 输出到stdout + 重定向</td>
+            </tr>
+            <tr>
+                <td><code>gunzip *.gz</code></td>
+                <td>批量解压多个文件</td>
+                <td>通配符操作</td>
+            </tr>
+            <tr>
+                <td><code>gunzip -t file.gz</code></td>
+                <td>测试压缩文件完整性</td>
+                <td><code>-t</code> = test</td>
+            </tr>
+            <tr>
+                <td><code>zcat file.gz</code></td>
+                <td>查看压缩文件内容</td>
+                <td>相当于 <code>gunzip -c</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <strong>💡 实用技巧：</strong>
+        <ul>
+            <li>想保留原文件？优先用 <code>-k</code> 或 <code>zcat file.gz > newfile</code></li>
+            <li>解压到指定目录：<code>gunzip -c file.gz > /path/to/dir/file</code></li>
+            <li><code>zcat</code> 适合查看或管道处理：<code>zcat log.gz | grep "error"</code></li>
+        </ul>
+    </div>
+</body>
+</html>
